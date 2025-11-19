@@ -7,6 +7,15 @@ const App = () => {
         Rsbuild with React
       </h1>
       <p>Start building amazing things with Rsbuild.</p>
+      <div
+        className="flex justify-center"
+      >
+        <img
+          src="./static/image/marker.png"
+          alt="marker"
+          width={200}
+        />
+      </div>
     </div>
   );
 };
