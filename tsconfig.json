@@ -16,6 +16,11 @@
     "allowImportingTsExtensions": true,
     "noUncheckedSideEffectImports": true,
 
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
     /* type checking */
     "strict": true,
     "noUnusedLocals": true,
