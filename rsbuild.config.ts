@@ -5,6 +5,7 @@ import { pluginReact } from '@rsbuild/plugin-react';
 export default defineConfig({
   plugins: [pluginReact()],
   html: {
+    title: 'cv',
     favicon: './public/static/image/marker.png',
   },
 });
