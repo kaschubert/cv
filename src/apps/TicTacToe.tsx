@@ -138,7 +138,7 @@ function Game() {
   });
 
   return (
-    <div className="text-black flex columns-2 gap-4">
+    <div className="text-white flex columns-2 gap-4">
       <div>
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>

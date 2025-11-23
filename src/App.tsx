@@ -17,7 +17,7 @@ let app = function AppShowcase() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-r from-cyan-500 to-blue-500">
+    <div className="bg_gradient">
       <div className="py-2 px-2 sm:px-6 lg:px-8">
           <Tabs tabs={myTabs} defaultActive={0} />
       </div>

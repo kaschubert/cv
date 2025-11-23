@@ -16,3 +16,10 @@ body {
   font-weight: 400;
   opacity: 0.5;
 }
+
+@layer components {
+  .bg_gradient {
+    @apply 
+      min-h-screen bg-linear-to-r from-cyan-950 to-cyan-800
+  }
+}

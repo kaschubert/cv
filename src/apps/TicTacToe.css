@@ -32,7 +32,7 @@
       bg-gray-700 hover:bg-gray-600 text-gray-200 hover:text-white
       
       /* Disabled = current move (visual indicator) */
-      disabled:bg-blue-600 disabled:text-white disabled:font-bold
-      disabled:hover:bg-blue-500 disabled:cursor-default
+      disabled:bg-cyan-600 disabled:text-white disabled:font-bold
+      disabled:hover:bg-cyan-500 disabled:cursor-default
   }
 }
