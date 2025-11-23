@@ -20,7 +20,8 @@
   }
 
   .square-winning {
-    @apply bg-yellow-200 animate-pulse ring-4 ring-yellow-400 ring-offset-2;
+    @apply
+      bg-yellow-200 animate-pulse ring-4 ring-yellow-400 ring-offset-2;
   }
 
   .move {

@@ -5,17 +5,24 @@ import { useState } from 'react';
 function Square({
   value,
   onSquareClick,
-  isWinning = false
+  index = 0,
+  winner = null
 }: { 
   value: string,
   onSquareClick: () => void,
-  isWinning?: boolean
+  index?: number,
+  winner?: Winner | null
 }) {
+
+  let className = "square";
+  if (winner && winner.winner_squares.includes(index)) {
+    className += " square-winning";
+  }
 
   return (
     <button
       onClick={onSquareClick}
-      className="square"
+      className={className}
     >
       {value}
     </button>
@@ -45,7 +52,7 @@ function Board(
   const winner = calculateWinner(squares);
   let status_text;
   if (winner) {
-    status_text = "Winner: " + winner;
+    status_text = "Winner: " + winner.name;
   } else {
     status_text = "Next player: " + (xIsNext ? "X" : "O");
   }
@@ -67,10 +74,13 @@ function Board(
   //   }    
   // }
 
+  //more elegant than double for loop
   let squareItems = squares.map((value, index) => (
     <Square
       key={index}
       value={value}
+      index={index}
+      winner={winner}
       onSquareClick={() => handleClick(index)}
     />
   ))
@@ -97,6 +107,7 @@ function Game() {
     /*array of arrays for holding the board state before each game move*/
     [Array(9).fill('')]
   );
+  const [invertMoves, setInvertMoves] = useState(false);
   const currentSquares = history[currentMove];
   const xIsNext = currentMove % 2 === 0;
 
@@ -106,8 +117,13 @@ function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  function jumpTo(nextMove: number) {
+  function jump_to(nextMove: number) {
     setCurrentMove(nextMove);
+  }
+
+  function invert_moves() {
+    console.log("invert moves now ", !invertMoves);
+    setInvertMoves(!invertMoves);
   }
 
   const moves = history.map((squares, move: number) => {
@@ -125,7 +141,7 @@ function Game() {
     let jsx = (
       <li key={move}>
         <button
-          onClick={() => jumpTo(move)}
+          onClick={() => jump_to(move)}
           disabled={move === currentMove}
           className={"move"}
         >
@@ -137,19 +153,38 @@ function Game() {
     return jsx;
   });
 
+  if (invertMoves) {
+    moves.reverse()
+  }
+
   return (
     <div className="text-white flex columns-2 gap-4">
       <div>
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <ol className="space-y-1">
-        {moves}
-      </ol>
+      <div className="space-y-4">
+        <button
+          onClick={() => invert_moves()}
+          className={"move"}
+        >
+          Invert moves
+        </button>
+        <ol className="space-y-1">
+          {
+            moves
+          }
+        </ol>
+      </div>
     </div>
   );
 }
 
-function calculateWinner(squares: Array<string>) {
+interface Winner {
+  name: string;
+  winner_squares: [number, number, number];
+}
+
+function calculateWinner(squares: Array<string>) : Winner | null {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -163,7 +198,11 @@ function calculateWinner(squares: Array<string>) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      const winner: Winner = {
+        name: squares[a],
+        winner_squares: [a, b, c]
+      };
+      return winner;
     }
   }
   return null;
