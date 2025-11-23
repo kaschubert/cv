@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer components {
+  .square_grid {
+    @apply 
+      grid grid-cols-3
+      gap-0 
+  }
+
+  .square {
+    @apply 
+      w-[64px] h-[64px]
+      bg-white text-black
+      border border-gray-500
+      text-5xl font-bold
+      flex items-center justify-center
+      select-none
+      hover:bg-gray-100
+      focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .square-winning {
+    @apply bg-yellow-200 animate-pulse ring-4 ring-yellow-400 ring-offset-2;
+  }
+
+  .move {
+    @apply 
+      w-full px-4 py-2 text-left text-sm font-medium rounded-lg
+      transition-all duration-200
+      
+      /* Normal state */
+      bg-gray-700 hover:bg-gray-600 text-gray-200 hover:text-white
+      
+      /* Disabled = current move (visual indicator) */
+      disabled:bg-blue-600 disabled:text-white disabled:font-bold
+      disabled:hover:bg-blue-500 disabled:cursor-default
+  }
+}
