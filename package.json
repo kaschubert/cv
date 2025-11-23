@@ -10,7 +10,9 @@
     "format": "biome format --write",
     "preview": "rsbuild preview",
     "debug_dev": "DEBUG=rsbuild pnpm dev",
-    "debug_build": "DEBUG=rsbuild pnpm build"
+    "debug_build": "DEBUG=rsbuild pnpm build",
+    "wasm_dev": "wasm-pack build . --dev --target bundler",
+    "wasm_release": "wasm-pack build . --release --no-opt --target bundler"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
@@ -29,6 +31,7 @@
     "@types/react": "^19.2.4",
     "@types/react-dom": "^19.2.3",
     "postcss": "^8.5.6",
+    "postcss-styled-syntax": "^0.7.1",
     "typescript": "^5.9.3"
   }
 }
