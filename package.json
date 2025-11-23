@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
-    "postcss": "^8.5.6",
+    "lucide-react": "^0.554.0",
     "postcss-loader": "^8.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -28,6 +28,7 @@
     "@rspack/core": "^1.6.3",
     "@types/react": "^19.2.4",
     "@types/react-dom": "^19.2.3",
+    "postcss": "^8.5.6",
     "typescript": "^5.9.3"
   }
 }
